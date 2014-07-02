@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/captureView" />
+    <Button
+        android:id="@+id/caputureButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Take a picture"/>
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload a picture"/>
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Share a picture"/>
+    <Button
+        android:id="@+id/viewButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="View pictures"/>
+</LinearLayout>
