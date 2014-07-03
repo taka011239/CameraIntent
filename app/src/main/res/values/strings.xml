@@ -5,5 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_picture_list">pictureListActivity</string>
+    <string name="title_activity_picture_view">PictureViewActivity</string>
 
 </resources>

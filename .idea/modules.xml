@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CameraIntent.iml" filepath="$PROJECT_DIR$/CameraIntent.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bluetoothdemoapp.iml" filepath="$PROJECT_DIR$/bluetoothdemoapp.iml" />
     </modules>
   </component>
 </project>

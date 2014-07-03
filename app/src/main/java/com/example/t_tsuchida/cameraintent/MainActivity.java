@@ -68,6 +68,14 @@ public class MainActivity extends Activity {
                 createPictureObject(bitmap);
             }
         });
+
+        viewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PictureListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
