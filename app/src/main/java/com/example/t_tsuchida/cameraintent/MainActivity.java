@@ -1,9 +1,11 @@
 package com.example.t_tsuchida.cameraintent;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -64,8 +66,36 @@ public class MainActivity extends Activity {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bitmap bitmap = ((BitmapDrawable)captureView.getDrawable()).getBitmap();
-                createPictureObject(bitmap);
+                BitmapDrawable bitmapDrawable = (BitmapDrawable)captureView.getDrawable();
+                if(bitmapDrawable != null) {
+                    Bitmap bitmap = bitmapDrawable.getBitmap();
+                    createPictureObject(bitmap);
+                } else {
+                    showToast("Error : " + "写真を撮ってください。");
+                }
+            }
+        });
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) captureView.getDrawable();
+                if (bitmapDrawable != null) {
+                    Bitmap bitmap = ((BitmapDrawable) captureView.getDrawable()).getBitmap();
+                    if (saveBitmapToSd(bitmap)) {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_SEND);
+                        intent.setType("image/jpeg");
+
+                        File localFile = new File(Environment.getExternalStorageDirectory(), "temp_upload.jpg");
+                        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(localFile));
+                        startActivity(intent);
+                    } else {
+                        Log.e(TAG, "Cannot save image to SDCard");
+                    }
+                } else {
+                    showToast("Error : " + "写真を撮ってください。");
+                }
             }
         });
     }
@@ -113,6 +143,7 @@ public class MainActivity extends Activity {
             SimpleDateFormat fileName = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
 
             object.set("title", fileName.format(mDate));
+            object.set("type", "image/jpg");
 
             object.save(new KiiObjectCallBack() {
 
@@ -142,6 +173,8 @@ public class MainActivity extends Activity {
                 }
 
             });
+        } else {
+            Log.e(TAG, "Cannot save image to SDCard");
         }
     }
 
